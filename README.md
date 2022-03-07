@@ -3,8 +3,10 @@
 A tray application that shows the status of conservation mode and helps you enable it or disable it!
 
 <p align="center">
-  <img src="https://github.com/liperium/Linux-Conservation-Mode-For-Lenovo/blob/main/demo.gif" alt="Demo of the tray service"/>
+  <img src="https://github.com/liperium/Linux-Conservation-Mode-Utility/blob/main/demo.gif" alt="Demo of the tray service"/>
 </p>
+
+**This project is a [fork from my previous one](https://github.com/liperium/Linux-Conservation-Mode-For-Lenovo) written in go. It is way smaller (executable 90% smaller and ram ~40% smaller)**
 
 ## Works for :
 
