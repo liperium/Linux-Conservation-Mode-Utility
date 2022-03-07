@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"os/user"
 	"path/filepath"
 
 	"github.com/getlantern/systray"
@@ -15,16 +16,22 @@ func main() {
 }
 
 func getRunningDir() string {
-	ex, err := os.Executable()
+	// ex, err := osext.Executable()
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// exPath := filepath.Dir(ex)
+	// TODO change this to be dynamic, not sure how to do it in go
+	user, err := user.Current()
 	if err != nil {
-		panic(err)
+		fmt.Println(err.Error())
 	}
-	exPath := filepath.Dir(ex)
-	return exPath
+	username := user.Username
+	return "/home/" + username + "/Documents/TCM/"
 }
 
 func onReady() {
-	systray.SetIcon(getIcon("assets/iconOn.ico"))
+	conservationModeFile := "/sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
 	systray.SetTitle("Linux Conservation Mode Switcher")
 	systray.SetTooltip("Lenovo conservation mode utility for linux")
 
@@ -41,7 +48,19 @@ func onReady() {
 	}()
 	checkState := func() bool {
 		status := false
-		//TODO status check
+
+		dat, err := os.ReadFile(conservationModeFile)
+		if err != nil {
+			fmt.Print(err)
+		}
+		statusString := string(dat)[0:1]
+		fmt.Println(statusString)
+
+		if statusString == "0" {
+			status = false
+		} else if statusString == "1" {
+			status = true
+		}
 		return status
 	}
 	changeState := func(cmOn bool) {
@@ -51,21 +70,24 @@ func onReady() {
 		}
 		pathToFile := filepath.Join(getRunningDir(), "CCM.sh")
 		command := "sudo " + pathToFile + temp
-		fmt.Println("Sending command :" + command)
-		exec.Command(command)
+		fmt.Println("Sending command :")
+		runCommand := exec.Command("/bin/sh", "-c", command)
+		fmt.Println(runCommand)
+		runCommand.Run()
 	}
 	updateUI := func() {
+		iconPaths := filepath.Join(getRunningDir(), "assets")
 		if checkState() {
 			mToggle.Check()
 			fmt.Println("On")
 			conservationMode = true
-			systray.SetIcon(getIcon("assets/iconOn.ico"))
+			systray.SetIcon(getIcon(filepath.Join(iconPaths, "iconOn.ico")))
 
 		} else {
 			mToggle.Uncheck()
 			fmt.Println("Off")
 			conservationMode = false
-			systray.SetIcon(getIcon("assets/iconOff.ico"))
+			systray.SetIcon(getIcon(filepath.Join(iconPaths, "iconOff.ico")))
 		}
 	}
 	updateUI()
