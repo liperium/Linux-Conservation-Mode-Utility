@@ -69,7 +69,7 @@ func onReady() {
 			temp = " 1"
 		}
 		pathToFile := filepath.Join(getRunningDir(), "CCM.sh")
-		command := "sudo " + pathToFile + temp
+		command := pathToFile + temp
 		fmt.Println("Sending command :")
 		runCommand := exec.Command("/bin/sh", "-c", command)
 		fmt.Println(runCommand)

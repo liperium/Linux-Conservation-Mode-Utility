@@ -28,7 +28,7 @@ Many more laptops can be adapted with the right settings in the .py and .sh
 
     2. Add to the end : 
     
-           **USER** ALL=(ALL:ALL) NOPASSWD:/home/**USER**/Documents/TCM/CCM.sh 
+           %wheel ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004\:00/conservation_mode
 
 4. Run TrayConservationMode
 
