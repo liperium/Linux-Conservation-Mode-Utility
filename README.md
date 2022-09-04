@@ -33,3 +33,11 @@ Many more laptops can be adapted with the right settings in the .py and .sh
 4. Run TrayConservationMode
 
 5. Optional : Add to startup applications and make a .desktop
+
+---
+
+## Fedora Install
+
+Instead of downloading from release, please build with the command : 
+
+    go build -tags=legacy_appindicator
