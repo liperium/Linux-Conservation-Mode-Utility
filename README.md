@@ -16,8 +16,6 @@ Many more laptops can be adapted with the right path in the *conservationmode* f
 
 # Installation
 
-## If you have the same laptop ( code : VPC2004:00 )
-
 ### Make sure you have libayatana-appindicator3 installed, if you cannot, use the *Legacy* release.
 
 1. Download [latest release ](https://github.com/liperium/Linux-Conservation-Mode-For-Lenovo/releases)
