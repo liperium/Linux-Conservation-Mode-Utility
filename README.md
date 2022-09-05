@@ -18,6 +18,8 @@ Many more laptops can be adapted with the right settings in the .py and .sh
 
 ## If you have the same laptop ( code : VPC2004:00 )
 
+### Make sure you have libayatana-appindicator3 installed, if you cannot, use the *Legacy* release.
+
 1. Download [latest release ](https://github.com/liperium/Linux-Conservation-Mode-For-Lenovo/releases)
 
 2. Extract to Documents ( the directory TCM must be in documents for now )
@@ -33,11 +35,3 @@ Many more laptops can be adapted with the right settings in the .py and .sh
 4. Run TrayConservationMode
 
 5. Optional : Add to startup applications and make a .desktop
-
----
-
-## Fedora Install
-
-Instead of downloading from release, please build with the command : 
-
-    go build -tags=legacy_appindicator
