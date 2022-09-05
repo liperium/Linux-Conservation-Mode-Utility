@@ -1,0 +1,14 @@
+# Change Conservation Mode - Only accepts certain inputs
+if [ "$1" = "status" ]
+then
+    cat /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
+elif [ "$1" = "on" ]
+then 
+    echo 1| sudo /usr/bin/tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
+elif [ "$1" = "off" ]
+then 
+    echo 0| sudo /usr/bin/tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
+elif [ "$1" = "-h" ] || [ "$1" = "-help" ]
+then
+    printf " -h/-help : help \n on : turns conservation_mode on \n off : turns conservation_mode off \n status : returns on/off (1/0)\n"
+fi

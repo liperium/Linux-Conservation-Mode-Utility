@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-	"os"
 	"os/exec"
 	"os/user"
 	"path/filepath"
@@ -31,7 +30,8 @@ func getRunningDir() string {
 }
 
 func onReady() {
-	conservationModeFile := "/sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
+	//conservationModeFile := "/sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
+	baseCommand := "conservationmode"
 	systray.SetTitle("Linux Conservation Mode Switcher")
 	systray.SetTooltip("Lenovo conservation mode utility for linux")
 
@@ -48,11 +48,14 @@ func onReady() {
 	}()
 	checkState := func() bool {
 		status := false
-
-		dat, err := os.ReadFile(conservationModeFile)
+		cmd := exec.Command("/bin/sh", "-c", "/usr/bin/"+baseCommand+" status")
+		//fmt.Println(cmd)
+		//dat, err := os.ReadFile(conservationModeFile)
+		dat, err := cmd.Output()
 		if err != nil {
 			fmt.Print(err)
 		}
+
 		statusString := string(dat)[0:1]
 		fmt.Println(statusString)
 
@@ -64,15 +67,15 @@ func onReady() {
 		return status
 	}
 	changeState := func(cmOn bool) {
-		temp := " 0"
+		temp := "off"
 		if cmOn {
-			temp = " 1"
+			temp = "on"
 		}
-		pathToFile := filepath.Join(getRunningDir(), "CCM.sh")
-		command := pathToFile + temp
-		fmt.Println("Sending command :")
-		runCommand := exec.Command("/bin/sh", "-c", command)
-		fmt.Println(runCommand)
+		baseCommand := "conservationmode"
+		//pathToFile := filepath.Join(getRunningDir(), "CCM.sh")
+		//fmt.Println("Sending command :")
+		runCommand := exec.Command("/bin/sh", "-c", "/usr/bin/"+baseCommand+" "+temp)
+		//fmt.Println(runCommand)
 		runCommand.Run()
 	}
 	updateUI := func() {
