@@ -1,0 +1,2 @@
+  #Used on other distro to test app without conservation_mode
+ echo $RANDOM % 2 | bc
