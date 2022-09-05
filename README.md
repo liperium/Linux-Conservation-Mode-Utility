@@ -10,9 +10,9 @@ A tray application that shows the status of conservation mode and helps you enab
 
 ## Works for :
 
-- Lenovo Legion 5
+- Lenovo Legion 5 ( code : VPC2004:00 )
 
-Many more laptops can be adapted with the right settings in the .py and .sh
+Many more laptops can be adapted with the right path in the *conservationmode* file
 
 # Installation
 
