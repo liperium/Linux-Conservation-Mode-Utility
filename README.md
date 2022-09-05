@@ -22,7 +22,9 @@ Many more laptops can be adapted with the right path in the *conservationmode* f
 
 2. Extract to Documents ( the directory TCM must be in documents for now )
 
-3. Add CCM.sh to the visudo
+3. Move conservationmode to /usr/bin/
+
+4. Add permissions to access the file to the visudo
 
     1. sudo visudo
 
@@ -30,6 +32,6 @@ Many more laptops can be adapted with the right path in the *conservationmode* f
     
            %wheel ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004\:00/conservation_mode
 
-4. Run TrayConservationMode
+5. Run TrayConservationMode
 
-5. Optional : Add to startup applications and make a .desktop
+6. Optional : Add to startup applications and make a .desktop
