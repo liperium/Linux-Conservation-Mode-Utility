@@ -18,7 +18,7 @@ Many more laptops can be adapted with the right path in the *conservationmode* f
 
 ### Make sure you have libayatana-appindicator3 installed, if you cannot, use the *Legacy* release.
 
-1. Download [latest release ](https://github.com/liperium/Linux-Conservation-Mode-For-Lenovo/releases)
+1. Download [latest release ](https://github.com/liperium/Linux-Conservation-Mode-Utility/releases/latest)
 
 2. Extract to Documents ( the directory TCM must be in documents for now )
 
