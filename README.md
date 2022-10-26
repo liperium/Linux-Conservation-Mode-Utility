@@ -14,7 +14,11 @@ A tray application that shows the status of conservation mode and helps you enab
 
 Many more laptops can be adapted with the right path in the *conservationmode* file
 
-# Installation
+# Install with script
+
+Copy the install.sh file of this repo. It should install as the manual install. So no .desktop and no auto-start.
+
+# Manual Installation
 
 ### Make sure you have libayatana-appindicator3 installed, if you cannot, use the *Legacy* release.
 
