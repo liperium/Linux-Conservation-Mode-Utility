@@ -10,8 +10,8 @@ BIN_FILE="conservationmode"
 USER_HOME=$(eval echo ~${SUDO_USER})
 INSTALL_FOLDER="$USER_HOME/Documents"
 CURR_DIR=$(pwd)
-FILE=/sys/bus/platform/drivers/ideapad_acpi/VPC2004\:00/conservation_mode
-TO_ADD="%wheel ALL=(ALL) NOPASSWD: /usr/bin/tee $FILE"
+CONSERVATIONMODEFILE=/sys/bus/platform/drivers/ideapad_acpi/VPC2004\:00/conservation_mode
+TO_ADD="%wheel ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004\:00/conservation_mode"
 
 #Launch as sudo
 [ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
@@ -20,10 +20,10 @@ TO_ADD="%wheel ALL=(ALL) NOPASSWD: /usr/bin/tee $FILE"
 cd $CURR_DIR
 
 #Test to see if system has right conservation_mode file
-if test -f "$FILE"; then
+if test -f "$CONSERVATIONMODEFILE"; then
     echo "Found right conservation_mode file, installation can proceed."
 else
-    return 1
+    echo "conservation_mode file not found at correct directory, please try to install/compile program with the right folder"
     exit
 fi
 
