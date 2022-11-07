@@ -1,0 +1,3 @@
+#!/bin/bash
+#Used on other pcs to test app without conservation_mode file
+echo $RANDOM % 2 | bc
