@@ -16,7 +16,7 @@ Many more laptops can be adapted with the right path in the *conservationmode* f
 
 # Install with script
 
-Copy the install.sh file of this repo. It should install as the manual install. So no .desktop and no auto-start.
+Copy the install.sh file of this repo. As the manual install, ot doesn't add a .desktop and doesn't auto-start.
 
 # Manual Installation
 
