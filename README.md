@@ -6,7 +6,7 @@ A tray application that shows the status of conservation mode and helps you enab
   <img src="https://github.com/liperium/Linux-Conservation-Mode-Utility/blob/master/demo.gif" alt="Demo of the tray service"/>
 </p>
 
-**This project is a [fork from my previous one](https://github.com/liperium/Linux-Conservation-Mode-For-Lenovo) written in go. It is way smaller (executable file is 90% smaller and in ram ~40% smaller)**
+**This project is a [fork from my previous one](https://github.com/liperium/Linux-Conservation-Mode-For-Lenovo) re-written in Go instead of Python. It is way smaller (executable file is 90% smaller and in ram ~40% smaller)**
 
 ## Works for :
 
