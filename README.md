@@ -16,7 +16,7 @@ Many more laptops can be adapted with the right path in the *conservationmode* f
 
 # Install with script
 
-Copy the install.sh file of this repo. As the manual install, ot doesn't add a .desktop and doesn't auto-start.
+Copy the install.sh file of this repo. Same as the manual install, it doesn't add a .desktop and doesn't auto-start.
 
 # Manual Installation
 
@@ -39,3 +39,5 @@ Copy the install.sh file of this repo. As the manual install, ot doesn't add a .
 5. Run TrayConservationMode
 
 6. Optional : Add to startup applications and make a .desktop
+
+### If you have a problem with a appindicator dependancy and using the Legacy version, make sure you install the correct package as found in this [issue](https://github.com/liperium/Linux-Conservation-Mode-Utility/issues/3#issuecomment-1384463218)
