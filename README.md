@@ -32,7 +32,7 @@ Copy the install.sh file of this repo. Same as the manual install, it doesn't ad
 
     1. sudo visudo
 
-    2. Add to the end : 
+    2. Add to the end **(replace ```wheel``` with sudo if on Debian)** [issue](https://github.com/liperium/Linux-Conservation-Mode-Utility/issues/4): 
     
            %wheel ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004\:00/conservation_mode
 
