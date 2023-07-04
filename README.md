@@ -41,3 +41,16 @@ Copy the install.sh file of this repo. Same as the manual install, it doesn't ad
 6. Optional : Add to startup applications and make a .desktop
 
 ### If you have a problem with a appindicator dependancy and using the Legacy version, make sure you install the correct package as found in this [issue](https://github.com/liperium/Linux-Conservation-Mode-Utility/issues/3#issuecomment-1384463218)
+
+## .desktop Entry template file (replace %USER% with yours)
+```
+[Desktop Entry]
+Comment=
+Exec=/home/%USER%/Documents/TCM/TrayConservationMode
+GenericName=Tray conservation mode manager for Lenovo laptops\s
+Icon=/home/%USER%/Documents/TCM/assets/iconOn.ico
+Name=Tray Conservation Mode
+NoDisplay=false
+Terminal=false
+Type=Application
+```
