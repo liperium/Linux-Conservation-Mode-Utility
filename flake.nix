@@ -7,7 +7,8 @@
    devShell.x86_64-linux = with nixpkgs.legacyPackages.x86_64-linux; mkShell {
      buildInputs = [
         go
-       # zsh
+        pkg-config
+        libayatana-appindicator
      ];
    };
  };
