@@ -48,7 +48,7 @@ func onReady() {
 	}()
 	checkState := func() bool {
 		status := false
-		cmd := exec.Command("/bin/sh", "-c", "/usr/bin/"+baseCommand+" status")
+		cmd := exec.Command(baseCommand, "status")
 		//fmt.Println(cmd)
 		//dat, err := os.ReadFile(conservationModeFile)
 		dat, err := cmd.Output()
@@ -74,7 +74,7 @@ func onReady() {
 		baseCommand := "conservationmode"
 		//pathToFile := filepath.Join(getRunningDir(), "CCM.sh")
 		//fmt.Println("Sending command :")
-		runCommand := exec.Command("/bin/sh", "-c", "/usr/bin/"+baseCommand+" "+temp)
+		runCommand := exec.Command(baseCommand,temp)
 		//fmt.Println(runCommand)
 		runCommand.Run()
 	}
