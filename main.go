@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os/exec"
-	"os/user"
 	"path/filepath"
 
 	"github.com/getlantern/systray"
@@ -21,12 +20,7 @@ func getRunningDir() string {
 	// }
 	// exPath := filepath.Dir(ex)
 	// TODO change this to be dynamic, not sure how to do it in go
-	user, err := user.Current()
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	username := user.Username
-	return "/home/" + username + "/Documents/TCM/"
+	return "/opt/conservation_mode/"
 }
 
 func onReady() {
@@ -74,7 +68,7 @@ func onReady() {
 		baseCommand := "conservationmode"
 		//pathToFile := filepath.Join(getRunningDir(), "CCM.sh")
 		//fmt.Println("Sending command :")
-		runCommand := exec.Command(baseCommand,temp)
+		runCommand := exec.Command(baseCommand, temp)
 		//fmt.Println(runCommand)
 		runCommand.Run()
 	}
@@ -96,17 +90,14 @@ func onReady() {
 	updateUI()
 	go func() {
 
-		for {
-			select {
-			case <-mToggle.ClickedCh:
-				if mToggle.Checked() {
-					conservationMode = false
-				} else {
-					conservationMode = true
-				}
-				changeState(conservationMode)
-				updateUI()
+		for range mToggle.ClickedCh {
+			if mToggle.Checked() {
+				conservationMode = false
+			} else {
+				conservationMode = true
 			}
+			changeState(conservationMode)
+			updateUI()
 		}
 	}()
 }

@@ -1,23 +1,26 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-
+# Remote stuff
 BASE_URL="https://github.com/liperium/Linux-Conservation-Mode-Utility/releases/latest/download/"
 DEFAULT="TrayConservationMode.tar.gz"
-LEGACY="TrayConservationMode_Legacy.tar.gz"
 FILENAME="$DEFAULT"
-FOLDER="TCM"
+
+# Install paths
+FOLDER="conservation_mode"
 BIN_FILE="conservationmode"
-USER_HOME=$(eval echo ~${SUDO_USER})
-INSTALL_FOLDER="$USER_HOME/Documents"
-CURR_DIR=$(pwd)
+INSTALL_FOLDER="/opt"
+
+# Conservationmode file for the platform
 CONSERVATIONMODEFILE=/sys/bus/platform/drivers/ideapad_acpi/VPC2004\:00/conservation_mode
-TO_ADD="%wheel ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004\:00/conservation_mode"
+
+# The permissions to read/write said file from the user, instead of giving conservation_mode sudo, prefer that way.
+TO_ADD="%wheel ALL=(ALL) NOPASSWD: /usr/bin/tee $CONSERVATIONMODEFILE"
 
 #Launch as sudo
 [ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
 
-#Go to current dir ( because switched to sudo )
-cd $CURR_DIR
+#Go to tmp dir for manips
+cd /tmp
 
 #Test to see if system has right conservation_mode file
 if test -f "$CONSERVATIONMODEFILE"; then
@@ -27,21 +30,12 @@ else
     exit
 fi
 
-#Legacy appindicators? Or ayatana
-echo "Do you want to use legacy appindicators Y/n"
-read -n 1 ans
-echo $ans
-
-if [[ $ans == "y" || $ans == "Y" ]]; then
-    FILENAME=$LEGACY
-fi
-
 #Get latest release and extract
 COMMAND="$BASE_URL$FILENAME"
 wget "$COMMAND"
 tar -xf $FILENAME
 
-#Remove old version
+#Remove old version, even if doesn't exist
 rm -r "$INSTALL_FOLDER/$FOLDER"
 
 #Move files
@@ -50,7 +44,6 @@ mv "$FOLDER" "$INSTALL_FOLDER" # conservation mode app
 
 #Give permission to anyone to tee the file (best way for now) and only adds if not already in file
 sudo cat /etc/sudoers | grep "%wheel ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004\\\\:00/conservation_mode" >/dev/null|| echo "$TO_ADD" | sudo EDITOR='tee -a' visudo
-
 
 #Cleanup
 rm -r $FILENAME

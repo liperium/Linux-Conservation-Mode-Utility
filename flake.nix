@@ -9,6 +9,7 @@
         go
         pkg-config
         libayatana-appindicator
+        gtk3
      ];
    };
  };
