@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Change Conservation Mode - Only accepts certain inputs
 if [ "$1" = "status" ]
 then
