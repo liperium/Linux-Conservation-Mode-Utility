@@ -14,7 +14,7 @@
 
 buildGoApplication rec {
   pname = "tray-conservationmode";
-  version = "0.1";
+  version = "1.3";
   pwd = ./.;
   src = ./.;
   modules = ./gomod2nix.toml;
