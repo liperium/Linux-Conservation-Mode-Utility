@@ -15,10 +15,21 @@
 
 let
   goEnv = mkGoEnv { pwd = ./.; };
+  conservationmode =
+    pkgs.writeShellScriptBin "conservationmode" ''
+      ${builtins.readFile ./conservationmode}
+    '';
 in
-pkgs.mkShell {
-  packages = [
+pkgs.mkShellNoCC {
+  packages = with pkgs;[
     goEnv
     gomod2nix
+    go
+    gomod2nix
+    pkg-config
+    libayatana-appindicator
+    gtk3
+    conservationmode
   ];
+  CONSERVATION_TEST_ENV = 1;
 }

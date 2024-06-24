@@ -13,9 +13,15 @@
 }:
 
 buildGoApplication {
-  pname = "myapp";
+  pname = "gotcm";
   version = "0.1";
   pwd = ./.;
   src = ./.;
   modules = ./gomod2nix.toml;
+  nativeBuildInputs = [ pkgs.pkg-config ];
+  buildInputs = with pkgs;[
+    pkg-config
+    libayatana-appindicator
+    gtk3
+  ];
 }
