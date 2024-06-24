@@ -24,8 +24,6 @@ pkgs.mkShellNoCC {
   packages = with pkgs;[
     goEnv
     gomod2nix
-    go
-    gomod2nix
     pkg-config
     libayatana-appindicator
     gtk3

@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"os/exec"
+	"path"
 	"path/filepath"
+	"strings"
 
 	"github.com/getlantern/systray"
 )
@@ -14,13 +16,7 @@ func main() {
 }
 
 func getRunningDir() string {
-	// ex, err := osext.Executable()
-	// if err != nil {
-	// 	panic(err)
-	// }
-	// exPath := filepath.Dir(ex)
-	// TODO change this to be dynamic, not sure how to do it in go
-	return "/opt/conservation_mode/"
+	return strings.TrimSuffix(path.Dir(os.Args[0]), "bin")
 }
 
 func onReady() {
@@ -73,7 +69,10 @@ func onReady() {
 		runCommand.Run()
 	}
 	updateUI := func() {
-		iconPaths := filepath.Join(getRunningDir(), "assets")
+		dir := getRunningDir()
+		fmt.Println(dir)
+
+		iconPaths := filepath.Join(dir, "assets")
 		if checkState() {
 			mToggle.Check()
 			fmt.Println("On")
@@ -107,7 +106,7 @@ func onExit() {
 }
 
 func getIcon(s string) []byte {
-	b, err := ioutil.ReadFile(s)
+	b, err := os.ReadFile(s)
 	if err != nil {
 		fmt.Print(err)
 	}
