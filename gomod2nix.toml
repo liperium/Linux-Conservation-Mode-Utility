@@ -1,0 +1,33 @@
+schema = 3
+
+[mod]
+  [mod."github.com/getlantern/context"]
+    version = "v0.0.0-20190109183933-c447772a6520"
+    hash = "sha256-T4v8t2Hg7lT5d69hD7189WN+dPeMxWXY3vfyiW+oQSM="
+  [mod."github.com/getlantern/errors"]
+    version = "v0.0.0-20190325191628-abdb3e3e36f7"
+    hash = "sha256-AvZvWYUJtOMo7Lk7sZ0BzIougsGltlZ3fAZ6yNjkZs8="
+  [mod."github.com/getlantern/golog"]
+    version = "v0.0.0-20190830074920-4ef2e798c2d7"
+    hash = "sha256-X3o4fSfl+Hb2ZIViUpIg9jpfWjMObrJ53m5E4WFwiLg="
+  [mod."github.com/getlantern/hex"]
+    version = "v0.0.0-20190417191902-c6586a6fe0b7"
+    hash = "sha256-WGOCIMQrXovgp1TGheQv9GOZa/4T5xI2h2gh5Eeqayc="
+  [mod."github.com/getlantern/hidden"]
+    version = "v0.0.0-20190325191715-f02dbb02be55"
+    hash = "sha256-zTYo91NllpZhrWKerxtOdqNkLm7hxpd91POHSAajKT4="
+  [mod."github.com/getlantern/ops"]
+    version = "v0.0.0-20190325191751-d70cb0d6f85f"
+    hash = "sha256-2+oDnDZ1YjJc68ERVV902VAbjmGbFi6rvWtWisFjrlQ="
+  [mod."github.com/getlantern/systray"]
+    version = "v1.2.2"
+    hash = "sha256-GEflgBfashORmopz8kxD7R3GRMKyF7bGE2DXr0w5nX0="
+  [mod."github.com/go-stack/stack"]
+    version = "v1.8.0"
+    hash = "sha256-26RlTEcAkbewMUtmirKrDGQ1WJlNousp69v7HMopYnI="
+  [mod."github.com/oxtoacart/bpool"]
+    version = "v0.0.0-20190530202638-03653db5a59c"
+    hash = "sha256-Jaw3QTrj05MwADtv7lSjwMACp8s2Z/ratmxPw0t9LbM="
+  [mod."golang.org/x/sys"]
+    version = "v0.1.0"
+    hash = "sha256-nZbEJ/2PuWrDLD4ujeVvcFGoIsfVoIH/Lcp4FjD7hpU="
