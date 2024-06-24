@@ -1,3 +1,4 @@
+**Currently re-writing most of the build process with nix, breaking changes will be on the menu.**
 # Linux Conservation Mode for Lenovo laptops
 
 A tray application that shows the status of conservation mode and helps you enable it or disable it!
