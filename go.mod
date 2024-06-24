@@ -1,4 +1,4 @@
-module mattysgervais.com/gotcm
+module mattysgervais.com/tray-conservationmode
 
 go 1.17
 

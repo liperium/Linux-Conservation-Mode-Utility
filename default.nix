@@ -12,8 +12,8 @@
 , buildGoApplication ? pkgs.buildGoApplication
 }:
 
-buildGoApplication {
-  pname = "gotcm";
+buildGoApplication rec {
+  pname = "tray-conservationmode";
   version = "0.1";
   pwd = ./.;
   src = ./.;
@@ -24,4 +24,15 @@ buildGoApplication {
     libayatana-appindicator
     gtk3
   ];
+  installPhase = ''
+    runHook preInstall
+
+    mkdir -p $out/assets
+    mkdir -p $out/bin
+    dir="$GOPATH/bin"
+    [ -e "$dir" ] && cp -r $dir $out
+    cp ${pwd}/assets/* $out/assets
+
+    runHook postInstall
+  '';
 }
